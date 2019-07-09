@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = MainActivity.class.getSimpleName();
     //views
-    @BindView(R.id.button)
+    @BindView(R.id.sendButton)
     Button sendButton;
     @BindView(R.id.editTextPhoneNumber)
     EditText inputPhoneNumber;
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         //set custom font
         Typeface openSansFont = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Regular.ttf");
+        inputPhoneNumber.setTypeface(openSansFont);
         sendButton.setTypeface(openSansFont);
 
         //Initialize Daraja
@@ -66,38 +67,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        sendButton.setOnClickListener(v -> {
-//            //Get the phone number from user input
-//            phoneNumber = inputPhoneNumber.getText().toString().trim();
-//
-//            if (TextUtils.isEmpty(phoneNumber)) {
-//                inputPhoneNumber.setError("Please provide a phone number");
-//                return;
-//            }
-//            LNMExpress lnmExpress = new LNMExpress(
-//                    "174379",
-//                    "h8unwAoDG9ikP7K3xP4kgTZ0xxAhJJzR",
-//                    TransactionType.CustomerPayBillOnline,
-//                    "100",
-//                    "254701770252",
-//                    "174379",
-//                    phoneNumber,
-//                    "http://mycallbackurl.com/checkout.php",
-//                    "001ABC",
-//                    "Goods Payment"
-//            );
-//
-//            daraja.requestMPESAExpress(lnmExpress, new DarajaListener<LNMResult>() {
-//                @Override
-//                public void onResult(@NonNull LNMResult lnmResult) {
-//                    Log.i(TAG, "onResult: "+lnmResult.ResponseDescription);
-//                }
-//
-//                @Override
-//                public void onError(String error) {
-//                    Log.i(TAG, "onError: "+error);
-//                }
-//            });
-//        });
+        sendButton.setOnClickListener(v -> {
+            //Get the phone number from user input
+            phoneNumber = inputPhoneNumber.getText().toString().trim();
+
+            if (TextUtils.isEmpty(phoneNumber)) {
+                inputPhoneNumber.setError("Please provide a phone number");
+                return;
+            }
+            LNMExpress lnmExpress = new LNMExpress(
+                    "174379",
+                    "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
+                    TransactionType.CustomerPayBillOnline,
+                    "1",
+                    "254708374149",
+                    "174379",
+                    phoneNumber,
+                    "http://mycallbackurl.com/checkout.php",
+                    "001ABC",
+                    "Goods Payment"
+            );
+
+            daraja.requestMPESAExpress(lnmExpress, new DarajaListener<LNMResult>() {
+                @Override
+                public void onResult(@NonNull LNMResult lnmResult) {
+                    Log.i(TAG, "onResult: "+lnmResult.ResponseDescription);
+                }
+
+                @Override
+                public void onError(String error) {
+                    Log.i(TAG, "onError: "+error);
+                }
+            });
+        });
     }
 }
