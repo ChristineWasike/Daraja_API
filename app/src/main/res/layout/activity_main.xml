@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/phoneNumber"
+                    android:id="@+id/editTextPhoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -35,18 +35,18 @@
 
                 <View
                     android:id="@+id/view"
-                    android:layout_below="@+id/phoneNumber"
+                    android:layout_below="@+id/editTextPhoneNumber"
                     android:layout_width="0dp"
                     android:layout_height="30dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/view"
                     android:background="@color/colorAccent"
                     android:gravity="center"
-                    android:text="Request MPESAExpress" />
+                    android:text="@string/request_mpesaexpress" />
 
             </RelativeLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
