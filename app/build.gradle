@@ -11,9 +11,26 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            //Consumer Key
+            buildConfigField 'String', 'ConsumerKey', LipaNaMPesa_ConsumerKey
+            resValue('string', 'consumer_key', LipaNaMPesa_ConsumerKey)
+
+            //Consumer Secret
+            buildConfigField('String','Consumer_Secret', LipaNaMpesa_ConsumerSecret)
+            resValue('string', 'consumer_secret', LipaNaMpesa_ConsumerSecret)
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // Consumer Key
+            buildConfigField('String', 'ConsumerKey', LipaNaMPesa_ConsumerKey)
+            resValue('string', 'consumer_key', LipaNaMPesa_ConsumerKey)
+
+            //Consumer Secret
+            buildConfigField('String', 'Consumer_Secret', LipaNaMpesa_ConsumerSecret)
+            resValue('string', 'consumer_secret', LipaNaMpesa_ConsumerSecret)
         }
     }
     compileOptions {

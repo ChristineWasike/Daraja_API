@@ -28,6 +28,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = MainActivity.class.getSimpleName();
+    String consumerKey = BuildConfig.ConsumerKey;
+    String consumerSecret = BuildConfig.Consumer_Secret;
     //views
     @BindView(R.id.sendButton)
     Button sendButton;
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         sendButton.setTypeface(openSansFont);
 
         //Initialize Daraja
-        daraja = Daraja.with("h8unwAoDG9ikP7K3xP4kgTZ0xxAhJJzR", "UEWAnKs3jJkiD4Kx", new DarajaListener<AccessToken>() {
+            daraja = Daraja.with(consumerKey, consumerSecret, new DarajaListener<AccessToken>() {
             @Override
             public void onResult(@NonNull AccessToken accessToken) {
                 Log.i(TAG, "onResult AccessToken: " + accessToken.getAccess_token());
